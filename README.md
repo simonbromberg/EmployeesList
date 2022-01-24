@@ -1,3 +1,9 @@
+## TODO:
+* UI for small images
+* Caching images
+* Improve loading / empty / error state UI
+* Unit testing
+
 ## Build tools & versions used
 * Swift 5.5
 * iOS 15.2
@@ -21,5 +27,6 @@
 ## What do you think is the weakest part of your project?
 
 ## Did you copy any code or dependencies? Please make sure to attribute them here!
+* [This raywenderlich.com tutorial](https://www.raywenderlich.com/25013447-async-await-in-swiftui) was a useful starting point for the `EmployeeService` observable object
 
 ## Is there any other information you’d like us to know?
