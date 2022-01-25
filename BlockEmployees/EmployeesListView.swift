@@ -5,54 +5,9 @@
 //  Created by Simon Bromberg on 2022-01-23.
 //
 
+import CachedAsyncImage
 import Combine
 import SwiftUI
-
-class EmployeeService: ObservableObject {
-    @Published private(set) var isLoading: Bool = false
-    @Published private(set) var employees: [Employee] = []
-    @Published private(set) var error: Error?
-
-    var updatedAt: Date = .distantPast
-
-    let dataProvider: DataProvider
-
-    init(dataProvider: DataProvider) {
-        self.dataProvider = dataProvider
-    }
-
-    @MainActor
-    func fetch() async {
-        isLoading = true
-        defer {
-            isLoading = false
-            updatedAt = .now
-        }
-
-        do {
-            employees = try await dataProvider.getEmployees()
-        } catch {
-            employees = []
-            self.error = error
-        }
-    }
-}
-
-extension EmployeeService {
-    var caption: String? {
-        if isLoading {
-            return "⏳ Loading…"
-        }
-        if let error = error {
-            return "🚨 Error loading employees: \(error.localizedDescription)"
-        }
-        if employees.isEmpty {
-            return "😬 No employees found. Get hiring!"
-        }
-
-        return "⌚️ Data updated \(updatedAt.description(with: .current))" // FIXME: formatter
-    }
-}
 
 struct EmployeesListView: View {
     @StateObject var employeeService: EmployeeService
@@ -63,9 +18,16 @@ struct EmployeesListView: View {
                 List {
                     ForEach(employeeService.employees) { employee in
                         HStack {
-                            Text(employee.fullName)
-                                .font(.headline)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            EmployeeImage(urlString: employee.photoUrlSmall)
+                                .frame(maxWidth: 50, maxHeight: 50)
+                            VStack {
+                                Text(employee.team)
+                                    .font(.caption)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                Text(employee.fullName)
+                                    .font(.headline)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                             Text(employee.employeeType.description)
                                 .font(.subheadline)
                         }
@@ -77,7 +39,7 @@ struct EmployeesListView: View {
                 .refreshable {
                     await employeeService.fetch()
                 }
-                Text(employeeService.caption ?? "")
+                employeeService.caption
                     .font(.caption)
                     .foregroundColor(employeeService.error != nil ? .red : .primary)
             }

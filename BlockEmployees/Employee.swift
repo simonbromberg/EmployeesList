@@ -16,9 +16,10 @@ struct Employee: Decodable, Identifiable, Hashable {
     let fullName: String
     let phoneNumber: String?
     let emailAddress: String
-    let biography: String
-    let photoUrlSmall: String
-    let photoUrlLarge: String
+    let biography: String?
+    let photoUrlSmall: String?
+    let photoUrlLarge: String?
+    let team: String
     let employeeType: EmployeeType
 
     enum EmployeeType: String, Decodable, CustomStringConvertible {

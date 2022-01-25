@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CachedAsyncImage",
+        "repositoryURL": "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage",
+        "state": {
+          "branch": null,
+          "revision": "248bedf022db6202ea9ff18f4d74be36443b2586",
+          "version": "1.10.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

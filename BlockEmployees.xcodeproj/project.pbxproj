@@ -19,6 +19,9 @@
 		D4C26662279E51F1006FAF5A /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C26661279E51F1006FAF5A /* Employee.swift */; };
 		D4C26663279E5411006FAF5A /* fixtures in Resources */ = {isa = PBXBuildFile; fileRef = D4C2665F279E4EC8006FAF5A /* fixtures */; };
 		D4C26665279E5F71006FAF5A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D4C26664279E5F71006FAF5A /* README.md */; };
+		D4C26668279FA768006FAF5A /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = D4C26667279FA768006FAF5A /* CachedAsyncImage */; };
+		D4C2666A279FA7FD006FAF5A /* EmployeeImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C26669279FA7FD006FAF5A /* EmployeeImage.swift */; };
+		D4C2666E279FAC91006FAF5A /* EmployeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C2666D279FAC91006FAF5A /* EmployeeService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,8 @@
 		D4C2665F279E4EC8006FAF5A /* fixtures */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fixtures; path = BlockEmployees/fixtures; sourceTree = SOURCE_ROOT; };
 		D4C26661279E51F1006FAF5A /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		D4C26664279E5F71006FAF5A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		D4C26669279FA7FD006FAF5A /* EmployeeImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeImage.swift; sourceTree = "<group>"; };
+		D4C2666D279FAC91006FAF5A /* EmployeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4C26668279FA768006FAF5A /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +113,9 @@
 				D4C26633279E4E24006FAF5A /* BlockEmployeesApp.swift */,
 				D4C26635279E4E24006FAF5A /* EmployeesListView.swift */,
 				D4C2665D279E4E3C006FAF5A /* NetworkProvider.swift */,
+				D4C26669279FA7FD006FAF5A /* EmployeeImage.swift */,
 				D4C26661279E51F1006FAF5A /* Employee.swift */,
+				D4C2666D279FAC91006FAF5A /* EmployeeService.swift */,
 				D4C26637279E4E27006FAF5A /* Assets.xcassets */,
 				D4C26639279E4E27006FAF5A /* Preview Content */,
 			);
@@ -156,6 +164,9 @@
 			dependencies = (
 			);
 			name = BlockEmployees;
+			packageProductDependencies = (
+				D4C26667279FA768006FAF5A /* CachedAsyncImage */,
+			);
 			productName = BlockEmployees;
 			productReference = D4C26630279E4E24006FAF5A /* BlockEmployees.app */;
 			productType = "com.apple.product-type.application";
@@ -228,6 +239,9 @@
 				Base,
 			);
 			mainGroup = D4C26627279E4E24006FAF5A;
+			packageReferences = (
+				D4C26666279FA768006FAF5A /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */,
+			);
 			productRefGroup = D4C26631279E4E24006FAF5A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,8 +288,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4C26636279E4E24006FAF5A /* EmployeesListView.swift in Sources */,
+				D4C2666E279FAC91006FAF5A /* EmployeeService.swift in Sources */,
 				D4C26662279E51F1006FAF5A /* Employee.swift in Sources */,
 				D4C26634279E4E24006FAF5A /* BlockEmployeesApp.swift in Sources */,
+				D4C2666A279FA7FD006FAF5A /* EmployeeImage.swift in Sources */,
 				D4C2665E279E4E3C006FAF5A /* NetworkProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +619,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D4C26666279FA768006FAF5A /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D4C26667279FA768006FAF5A /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4C26666279FA768006FAF5A /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D4C26628279E4E24006FAF5A /* Project object */;
 }
