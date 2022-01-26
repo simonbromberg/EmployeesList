@@ -43,6 +43,7 @@ struct EmployeesListView: View {
             }
             .navigationTitle("Employees")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
