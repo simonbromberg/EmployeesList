@@ -13,6 +13,34 @@ class EmployeeService: ObservableObject {
     @Published private(set) var isLoading: Bool = true
     @Published private(set) var employees: [Employee] = []
     @Published private(set) var error: Error?
+    @Published var sort: SortOption = .name {
+        didSet {
+            employees = employees.sorted(by: sort.keyPath)
+        }
+    }
+
+    enum SortOption: CaseIterable {
+        case name
+        case team
+
+        var title: String {
+            switch self {
+            case .name:
+                return NSLocalizedString("By Name", comment: "Sort button title")
+            case .team:
+                return NSLocalizedString("By Team", comment: "Sort button title")
+            }
+        }
+
+        var keyPath: KeyPath<Employee, String> {
+            switch self {
+            case .name:
+                return \.fullName
+            case .team:
+                return \.team
+            }
+        }
+    }
 
     var updatedAt: Date = .distantPast
 
@@ -31,7 +59,7 @@ class EmployeeService: ObservableObject {
         }
 
         do {
-            employees = try await dataProvider.getEmployees().sorted(by: \.fullName)
+            employees = try await dataProvider.getEmployees().sorted(by: sort.keyPath)
         } catch {
             employees = []
             self.error = error

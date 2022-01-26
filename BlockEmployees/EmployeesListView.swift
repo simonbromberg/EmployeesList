@@ -11,6 +11,7 @@ import SwiftUI
 
 struct EmployeesListView: View {
     @StateObject var employeeService: EmployeeService
+    @State private var showingConfirmation = false
     
     var body: some View {
         NavigationView {
@@ -42,6 +43,18 @@ struct EmployeesListView: View {
                 employeeService.caption
             }
             .navigationTitle("Employees")
+            .toolbar {
+                Button("Sort") {
+                    showingConfirmation = true
+                }
+                .confirmationDialog("Select sorting option…", isPresented: $showingConfirmation) {
+                    ForEach(EmployeeService.SortOption.allCases, id: \.self) { option in
+                        Button(option.title) {
+                            employeeService.sort = option
+                        }
+                    }
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
