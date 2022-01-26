@@ -40,8 +40,6 @@ struct EmployeesListView: View {
                     await employeeService.fetch()
                 }
                 employeeService.caption
-                    .font(.caption)
-                    .foregroundColor(employeeService.error != nil ? .red : .primary)
             }
             .navigationTitle("Employees")
         }

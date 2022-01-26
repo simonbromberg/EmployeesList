@@ -13,7 +13,7 @@ struct BlockEmployeesApp: App {
         WindowGroup {
             EmployeesListView(
                 employeeService: EmployeeService(
-                    dataProvider: MockProvider()
+                    dataProvider: NetworkProvider.shared
                 )
             )
         }

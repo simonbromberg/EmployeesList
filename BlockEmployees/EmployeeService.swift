@@ -43,15 +43,20 @@ extension EmployeeService {
     var caption: Text {
         if isLoading {
             return Text("⏳ Loading…")
+                .font(.caption)
         }
         if let error = error {
             return Text("🚨 Error loading employees: \(error.localizedDescription)")
+                .font(.body)
+                .foregroundColor(.red)
         }
         if employees.isEmpty {
             return Text("😬 No employees found. Get hiring!")
+                .font(.body)
         }
 
         return Text("⌚️ Data updated \(updatedAt, formatter: DateFormatter.dateTime)")
+            .font(.caption)
     }
 }
 

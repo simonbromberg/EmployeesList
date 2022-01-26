@@ -48,12 +48,11 @@ struct NetworkProvider: DataProvider {
         return try decode(data)
     }
 
-    static var shared: Self {
-        NetworkProvider(
-            baseURL: URL(
-                string: "https://s3.amazonaws.com/sq-mobile-interview/employees.json")!
-        )
-    }
+    static var shared: Self = NetworkProvider(
+        baseURL: URL(
+            string: "https://s3.amazonaws.com/sq-mobile-interview/employees.json"
+        )!
+    )
 }
 
 struct MockProvider: DataProvider {
